@@ -172,13 +172,13 @@ function getRes (data){
                 enableToRead = false;
                 e = e || window.event;
                 var target = e.target || e.srcElement;
-                var pos = target.getAttribute("src").thisElement(target);
+                var pos = thisElement(data, target.getAttribute("src"));
 
                 enableToRead = false;
-                modelo.innerHTML = data[pos].model.toUpperCase();
-                serial.innerHTML = data[pos].serial.toUpperCase();
-                tipo.innerHTML = data[pos].type.toUpperCase();
-                marca.innerHTML = data[pos].brand.toUpperCase();
+                modelo.innerHTML = data[pos].model;
+                serial.innerHTML = data[pos].serial;
+                tipo.innerHTML = data[pos].type;
+                marca.innerHTML = data[pos].brand;
                 comentario.innerHTML = data[pos].comment;
                 price.innerHTML = data[pos].price;
                 dates.innerHTML = data[pos].date;
@@ -217,31 +217,15 @@ function getRes (data){
 }
 //tools
 
-String.prototype.thisElement = function(thisEl){
-    var item = thisEl.parentElement;
-    var container = item.parentElement;
-    var c = 0;
-
-    for(var i = 0 ; i < container.childNodes.length ; i++){
-        if(container.childNodes[i].childNodes[0].getAttribute("src") == this){
-            if(container.getAttribute("id") == "firsTCt"){
-                return c;
-            }else if(container.getAttribute("id") == "secondTCt"){
-                return c+gC1;
-            }
-            else if(container.getAttribute("id") == "thirdTCt"){
-                return c+gC1+gC2;
-            }
-        
-            else if(container.getAttribute("id") == "fourTCt"){
-                return c+gC1+gC2+gC3;
-            }
-        }else{
-            c++;
+function thisElement(arry, src){
+    for(var i = 0; i < arry.length;i++){
+        if(arry[i].picture == src){
+            return i;
         }
     }
-    
 }
+
+
 function getCurrentDay(day){
     var td = day.getDay();
     if(td == 0){
@@ -270,8 +254,8 @@ function getHoursHalf(time){
     }else {
         pmOram = "p.m";
     }
-
-    return `${hour - 12}:${time.getMinutes()}:${time.getSeconds()} ${pmOram}`;
+    
+    return `${hour}:${time.getMinutes()}:${time.getSeconds()} ${pmOram}`;
 }
 
 function fullDate(day){

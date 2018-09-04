@@ -218,6 +218,9 @@ main{
                 transform:scale(0);
             }  
         }
+        #modelo, #serial, #tipo, #marca{
+            text-transform:capitalize;
+        }
         #com {
             *{
             display:block;

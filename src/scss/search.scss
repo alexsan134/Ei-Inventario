@@ -232,6 +232,9 @@ main{
                 font-size:1.5em;
             }
         }
+        #modelo, #serial, #tipo, #marca{
+            text-transform:capitalize;
+        }
         #com{
             *{
             display:block;

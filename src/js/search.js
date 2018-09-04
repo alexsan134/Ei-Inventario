@@ -200,7 +200,7 @@ function getRes (data){
             image.addEventListener('click', (e) =>{
                 e = e || window.event;
                 var target = e.target || e.srcElement;
-                var pos = target.getAttribute("src").thisElement(target);
+                var pos = thisElement(data, target.getAttribute("src"));
 
                 enableToRead = false;
                 modelo.innerHTML = data[pos].model.toUpperCase();
@@ -261,30 +261,12 @@ function numberOf(arry){
     return arryS;
 }
 
-String.prototype.thisElement = function(thisEl){
-    var item = thisEl.parentElement;
-    var container = item.parentElement;
-    var c = 0;
-
-    for(var i = 0 ; i < container.childNodes.length ; i++){
-        if(container.childNodes[i].childNodes[0].getAttribute("src") == this){
-            if(container.getAttribute("id") == "firsTCt"){
-                return c;
-            }else if(container.getAttribute("id") == "secondTCt"){
-                return c+gC1;
-            }
-            else if(container.getAttribute("id") == "thirdTCt"){
-                return c+gC1+gC2;
-            }
-        
-            else if(container.getAttribute("id") == "fourTCt"){
-                return c+gC1+gC2+gC3;
-            }
-        }else{
-            c++;
+function thisElement(arry, src){
+    for(var i = 0; i < arry.length;i++){
+        if(arry[i].picture == src){
+            return i;
         }
     }
-    
 }
 
 function groupBy(arry){
