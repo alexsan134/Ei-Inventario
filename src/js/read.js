@@ -1,4 +1,4 @@
-'use strict'
+﻿'use strict'
 
 
 var http = new XMLHttpRequest();
@@ -8,6 +8,7 @@ var enableToRead = true;
 var res;
 var c;
 var loc = window.location.href;
+var timeReload;
 
 //Elements
 //Protos
@@ -72,16 +73,19 @@ function setGrid(){
         gC2 = 2;
         gC3 = 3;
         max = 12;
+          timeReload = 5000;
     }
     if(w > 600 && w < 800){
         gC1 = 3;
         gC2 = 2;
         gC3 = 2;
         max = 10;
+          timeReload = 60000;
     }
     if(w <= 600){
         gC1 = 1;
         gC2 = 2;
+        timeReload = 60000;
         gC3 = 2;
         max = 11;
     }
@@ -125,7 +129,7 @@ setInterval(() =>{
     if(enableToRead){
         sendHTTP("");
     }
-}, 100);
+}, timeReload);
 
 function getRes (data){
 
@@ -167,7 +171,7 @@ function getRes (data){
 
             //Append
             item.appendChild(image);
-        
+
             image.addEventListener('click', (e) =>{
                 enableToRead = false;
                 e = e || window.event;

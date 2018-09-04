@@ -155,7 +155,7 @@ if(c == 1){
             M.toast({html: 'Producto guardado con exito.'});
             setTimeout(() => {
                 location.reload();
-            }, 1000);
+            }, 3000);
          }   
     }
 }
