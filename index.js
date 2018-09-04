@@ -49,7 +49,7 @@ app.on('window-all-closed', () =>{
 
 app.on('ready', () =>{
     createWindow();
-  createMenu();
+  //createMenu();
 });
 app.on('activate', () =>{
     if(win == true){
