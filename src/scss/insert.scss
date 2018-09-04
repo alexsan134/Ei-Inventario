@@ -1,0 +1,274 @@
+
+.openImg{
+    -webkit-filter:blur(10px);
+    filter:blur(10px);
+    -webkit-transform:scale(1.1, 1.1);
+    transform:scale(1.1, 1.1);
+}
+.cH{
+    height:200px;
+    width:auto;
+}
+.cW{
+    height:auto;
+    width:200px;
+}
+
+@mixin  mq {
+    border:2px solid rgba(0, 0, 0, 00.6);
+}
+@mixin  center($top , $left) {
+    position: relative;
+    top: $top;
+    left:$left;
+    -webkit-transform:translate(-50%, 0%);
+    transform:translate(-50%, 0%);
+}
+
+$primary:#2196F3;
+$secondary:#607d8b;
+$primaryDark:#1E88E5;
+$secondaryDark:#546e7a;
+$secondaryDark2:#455a64;
+
+
+
+//Main
+main{
+    position: relative;
+    top:100px;
+    padding-bottom:20px;
+    z-index:1;
+  
+    // Form
+    .form{
+        width:90%;
+        position: relative;
+        left:5%;
+       
+        #materialbox-overlay{
+            background: rgba(0,0,0,.8)!important;
+            margin:0 !important;
+        }
+        #piece{  
+            width:200px;
+            height:200px;
+            overflow: hidden;
+            border-radius:10px;
+            z-index:1000;
+            background:url("../img/add.png");
+            background-size:cover;
+           padding:0;
+            img{
+                
+                opacity:1!important;
+            }
+        }
+        .input-field label {
+            color: $secondary!important;
+          }
+        .input-field input[type=text]:focus {
+            border-bottom: 1px solid $secondary!important;
+            box-shadow: 0 1px 0 0 $secondary!important;
+        }
+        .input-field{
+            float: right;
+            margin-right:2px;
+            z-index:1;
+        }
+        
+        .input-field:nth-child(5), .input-field:nth-child(6), .input-field:nth-child(7){
+            top:15px;
+            float: left;
+            width:100%;
+            margin-right:2px;
+        }
+        .input-field:nth-child(8){
+            margin-top:26px;
+        }
+        .input-field:nth-child(8) textarea{
+            appearance: none;
+            border:1px solid rgba(0, 0, 0, 00.6);
+            border-radius:10px;
+            height:100px;
+            padding:10px;
+            outline:none!important;
+            resize:none;
+        }
+    }
+}
+
+.materialbox-caption{
+    position: fixed!important;
+    background:rgba(0, 0, 0, 1)!important;
+    z-index:1000!important;
+}
+
+
+.openS{
+    display:block;
+}
+.save{
+    transform: scale(1.2,1.2);
+    background:$primary;
+}
+.save:hover{
+    background: $primaryDark;
+}
+#frS{
+    display:none;
+}
+
+#btnSend{
+    display:none;
+}
+
+.progress{
+    position:fixed;
+    top:48px;
+    display:none;
+    z-index:1000;
+}
+@media screen and (max-width:448px){
+    #piece{
+        @include center(0, 50%); 
+    }
+    .form .input-field{
+        top:15px!important;
+        width:100%!important;
+        float: left!important;
+        margin-right:1px!important;
+    }
+
+}
+@media screen and (min-width:448px){
+    .form .input-field:nth-child(8) {
+        width:100%!important;
+    }
+}
+
+
+@media screen and (min-width:540px){
+   .form .input-field{
+        float: right;
+       width:58%!important;
+    }
+    .form .input-field:nth-child(5), .input-field:nth-child(6), .input-field:nth-child(7), .input-field:nth-child(8){
+        width:100%!important;
+    }
+
+}
+@media screen and (min-width:600px){
+    .progress{
+        position:fixed;
+        top:58px;
+    }
+}
+
+@media screen and (min-width:700px){
+    #piece{  
+        width:250px!important;
+        height:250px!important;
+    }
+    .cH{
+        height:250px;
+        width:auto;
+    }
+    .cW{
+        height:auto;
+        width:250px;
+    }
+
+   .form .input-field{
+        top:25px!important;
+    }
+    
+   .form .input-field:nth-child(5), .input-field:nth-child(6){
+        margin-top:10px!important;
+    }
+}
+@media screen and (min-width:900px){
+    #piece{  
+        width:300px!important;
+        height:300px!important;
+    }
+    .cH{
+        height:300px;
+        width:auto;
+    }
+    .cW{
+        height:auto;
+        width:300px;
+    }
+}
+
+
+@media screen and (min-width:995px){
+    #piece{  
+        width:300px!important;
+        height:300px!important;
+    }
+    .cH{
+        height:300px;
+        width:auto;
+    }
+    .cW{
+        height:auto;
+        width:300px;
+    }
+    main{
+        top:130px;
+    }
+    .progress{
+        position:fixed;
+        top:80px;
+    }
+}
+
+@media screen and (min-width:1024px){
+    #piece{  
+        width:350px!important;
+        height:350px!important;
+    }
+    .cH{
+        height:350px;
+        width:auto;
+    }
+    .cW{
+        height:auto;
+        width:350px;
+    }
+   .form .input-field:nth-child(5), .input-field:nth-child(6){
+       float: right!important;
+       width:58%!important;
+    }
+   .form .input-field:nth-child(5), .input-field:nth-child(6){
+        margin-top:15px!important;
+    }
+    #piece{
+      margin-top:52px;
+    }
+    .input-field input{
+        font-size:1.5em!important;
+    }
+    .input-field textarea{
+        font-size:1.5em!important;
+        height:200px!important;
+    }
+}
+@media screen and (min-width:1200px){
+    #piece{
+        margin-top:53px;
+        width:400px!important;
+        background-size:contain!important;
+        background-position:center center!important;
+      }
+}
+@media screen and (min-width:1280px){
+    #piece{
+        margin-top:53px;
+        width:480px!important;
+        background-size:contain!important;
+        background-position:center center!important;
+      }
+}

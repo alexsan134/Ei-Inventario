@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Electrónica Internacional</title>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#607d8b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="./css/insert.css">
+      <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./assets/icon/icons.css">
+    <link rel="icon" type="image/png" href="./assets/icon/icon.png">
+    <link rel="apple-touch-startup-image" href="./assets/icon/icon.png">
+    <link rel="manifest" href="./manifest.json">
+    <script async src="./js/pwacompat.min.js"
+    integrity="sha384-GOaSLecPIMCJksN83HLuYf9FToOiQ2Df0+0ntv7ey8zjUHESXhthwvq9hXAZTifA"></script>
+</head>
+<body>
+    <div id="titleBar"></div>
+  <nav class="navbar">
+    <div class="nav-wrapper">
+      <a href="./index.html" class="brand-logo"><img src="./img/logoWhite.png" alt="Logo"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#search" class="actSearch"><i class="material-icons">search</i></a></li>
+        <li><a href="#"><i class="material-icons">attach_file</i></a></li>
+        <li><a href="#"><i class="material-icons">settings</i></a></li>
+        <li><a href="#" class="remote"><i class="material-icons">wifi</i></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul id="slide-out" class="sidenav">
+      <li><div class="user-view">
+        <div class="background">
+          <img src="./img/sidenav.jpg">
+        </div>
+        <a href="./index.html"><img class="brandSidenav" src="./img/logoWhite.png"></a>
+        <a href="""><span class="white-text name">Electrónica Internacional</span></a>
+        <a href=""><span class="white-text email">Inventario</span></a>
+      </div></li>
+      <li><a href="#search" class="waves-effect actSearch"><i class="material-icons">search</i>Buscar</a></li>
+      <li><a href="./" class="waves-effect"><i class="material-icons">attach_file</i>Ingresar producto</a></a></li>
+      <li><div class="divider"></div></li>
+      <li><a class="subheader">Aplicacion</a></li>
+      <li><a class="waves-effect" href="#!"><i class="material-icons">settings</i>Configuración</a></li>
+      <li><a class="waves-effect upBtn remote" href="#!"><i class="material-icons">wifi</i>Conexión Remota</a></li>
+    </ul>
+
+    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">sort</i></a>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large save">
+      <i class="large material-icons">save</i>
+    </a>
+</div>
+<div id="searchBox">
+  <div class="row">
+    <div class="input-field col s6 sc">
+      <input id="search" type="text">
+      <label class="active" id="lblSearch" for="search">Buscar producto</label>
+    </div>
+    <a href="#search" id="searchBtn"><i class="material-icons">search</i></a> 
+
+  </div>
+  <a href="#close" id="exitSearch"><i class="material-icons">close</i></a>
+
+</div>
+  
+<main class="main">
+    <div class="progress ">
+        <div class="indeterminate"></div>
+      </div>   
+  <div class="form">    
+    <div class="row">
+      <form action="/file/" enctype="multipart/form-data" method="POST" id="frS">
+        <input type="file" id="imgSrc" name="filename">
+        <input type="submit" id="btnSend">
+      </form>   
+        <div id="piece" class="col s6" >
+            <img class="materialboxed" data-caption="Board">
+        </div>
+        <div class="input-field col s6">
+            <input  id="model" type="text" >
+            <label class="active" for="model">Modelo</label>
+            <span class="helper-text">Modelo completo de la tarjeta</span>
+        </div>
+        <div class="input-field col s6">
+          <input id="serial" type="text" >
+          <label class="active" for="serial">Serial</label>
+          <span class="helper-text">No. Serial</span>
+        </div>
+        <div class="input-field col s6">
+            <input  id="type" type="text" >
+            <label class="active" for="type">Tipo</label>
+            <span class="helper-text">Funcion de la tarjeta en el equipo</span>
+        </div>
+        <div class="input-field col s6">
+                <input id="brand" type="text" >
+                <label class="active" for="brand">Marca</label>
+                <span class="helper-text">Marca del equipo</span>
+        </div>
+        <div class="input-field col s6">
+            <input id="price" type="number" >
+            <label class="active" for="price">Precio</label>
+            <span class="helper-text">Precio en quetzales</span>
+    </div>
+        <div class="input-field col s6">
+          <textarea id="comment" type="text" ></textarea>
+          <span class="helper-text">Descripcion del producto</span>
+       </div>
+    </div>
+  </div>
+
+</main>
+</body>
+<script src="./css/materialize/js/materialize.min.js"></script>
+<script>
+  var includesHeader = false;
+  </script>
+<script src="./js/main.js"></script>
+<script src="./js/compat.js"></script>
+</html>
