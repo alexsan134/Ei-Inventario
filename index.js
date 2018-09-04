@@ -306,15 +306,7 @@ function getCurrentDay(day){
 
 function getHoursHalf(time){
     var hour = time.getHours();
-    var pmOram;
-
-    if(hour < 12){
-        pmOram = "a.m";
-    }else {
-        pmOram = "p.m";
-    }
-
-    return `${hour - 12}:${time.getMinutes()}:${time.getSeconds()} ${pmOram}`;
+    return `${hour}:${time.getMinutes()}:${time.getSeconds()} hrs`;
 }
 
 function fullDate(day){
