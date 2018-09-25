@@ -5,6 +5,7 @@ const bodyparser = require('body-parser');
 const appServe = express();
 const mongoose = require('mongoose');
 const Product = require('./models/product');
+const UsersD = require('./models/users');
 const Upload = require('express-fileupload');
 const fs = require('fs');
 var mvComplete = false;
@@ -48,9 +49,11 @@ app.on('window-all-closed', () =>{
 })
 
 app.on('ready', () =>{
-    createWindow();
-  //createMenu();
+    setTimeout(() => {
+        createWindow();
+    }, 3000);
 });
+
 app.on('activate', () =>{
     if(win == true){
         createWindow();
@@ -58,8 +61,7 @@ app.on('activate', () =>{
 })
 
 
-//Mongoose
-
+//Add Users
 
 
 //Init Server
@@ -74,6 +76,55 @@ appServe.get('/',function(req,res){
     res.sendFile(path.join(__dirname+'/src'));
 });
 
+// Send resources
+appServe.post('/user/',function(req,res){
+    let user = new UsersD();
+    user.name = req.body.name
+    user.pass = req.body.pass;
+    user.perm = req.body.perm;
+    user.save( (err) =>{
+        if(err) throw err;
+        else res.send("Success");
+    });
+});
+appServe.post("/validate", (req, res) =>{
+    let nameD = req.body.name;
+    let passD = req.body.pass;
+
+    UsersD.find({name: nameD}, (err, docs)=>{
+        if(err) throw err;
+        else if(docs != ""){
+            if(docs[0].pass == passD){
+                res.send(docs[0].perm);
+            }else{
+                res.send("wrong password");
+            }
+        }else{
+            res.send("not found");
+        }
+    })
+});
+
+appServe.get("/showUsers", (req, res) =>{
+    UsersD.find({}, (err, us) =>{
+        if(err) return res.status(500).send("Error al buscar");
+        if(!us){
+            res.status(404).send("No existe");
+        }
+        res.send(us);
+    });
+})
+appServe.get("/deleteUsers", (req, res) =>{
+    UsersD.remove({}, function(err) {
+        if (err) {
+            console.log(err)
+        } else {
+            res.end('success');
+        }
+    });
+})
+
+
 //Show all data
 appServe.get('/show',function(req,res){
     Product.find({}, (err, product) =>{
@@ -84,20 +135,6 @@ appServe.get('/show',function(req,res){
         res.send(product);
      }).sort({'_id': -1});
 });
-
-//Find By Id
-appServe.get('/show/:pid', (req, res) =>{
-   let pid = req.params.pid;
-
-   Product.findById(pid, (err, product) =>{
-       if(err) return res.status(500).send("Error al buscar");
-       if(!product){
-           res.status(404).send("No existe");
-       }
-       res.send({product: product});
-    })
-  
-})
 
 //Find by Model
 
@@ -114,7 +151,7 @@ appServe.get('/find/:pid', (req, res) =>{
             }else{
                 res.send(docs);
             }
-        }).sort({'_id': -1});
+        }).sort({'_id': 1});
     }
     function findBySerial(){
         Product.find({serial: pid}, function (err, docs) {
@@ -125,7 +162,7 @@ appServe.get('/find/:pid', (req, res) =>{
             }else{
                 res.send(docs);
             }
-        }).sort({'_id': -1});
+        }).sort({'_id': 1});
     }
     function findByType(){
         Product.find({type: pid}, function (err, docs) {
@@ -135,7 +172,7 @@ appServe.get('/find/:pid', (req, res) =>{
             }else{
                 res.send(docs);
             }
-        }).sort({'_id': -1});
+        }).sort({'_id': 1});
     }
     function findByBrand(){
         Product.find({brand: pid}, function (err, docs) {
@@ -145,7 +182,7 @@ appServe.get('/find/:pid', (req, res) =>{
             }else{
                 res.send(docs);
             }
-        }).sort({'_id': -1});
+        }).sort({'_id': 1});
     }
     function findByPrice(){
         Product.find({price: pid+"Q"}, function (err, docs) {
@@ -155,7 +192,7 @@ appServe.get('/find/:pid', (req, res) =>{
             }else{
                 res.send(docs);
             }
-        }).sort({'_id': -1});
+        }).sort({'_id': 1});
     }
     findByModel();
 });
@@ -175,7 +212,7 @@ appServe.get('/delete', (req, res) =>{
     });
 });
 
-appServe.post('/del', (req, res) =>{
+appServe.delete('/del', (req, res) =>{
     let pid = req.body.picture;
     Product.findOneAndRemove({picture : "."+pid}, function(err){
         if(err) throw err;
@@ -185,17 +222,22 @@ appServe.post('/del', (req, res) =>{
           });
     })
 })
-appServe.get('/delete/:pid', (req, res) =>{
-    let pid = req.params.pid;
-    Product.findByIdAndRemove(pid, (err, product) => {
-        if (err) return res.status(500).send(err);
-        if(!product){
-            res.status(404).send("No existe");
-        }
-        res.send({product: product});
-    });
-});
 
+appServe.put('/update', (req, res) =>{
+    var today = new Date();
+    var fullDateS = `${getCurrentDay(today)} ${fullDate(today)} a las ${getHoursHalf(today)}`;
+    let pid = req.body.picture;
+    Product.findOneAndUpdate({picture : "."+pid}, {
+        $set:{
+            model: req.body.model,
+            serial: req.body.serial,
+            type: req.body.type,
+            brand: req.body.brand,
+            comment: req.body.comment,
+            price: req.body.price,
+            date: fullDateS
+        }}, {new: true} , function(err){if(err) throw err;else res.send("success")});
+})
 
 //Save Data
 appServe.post('/file', (req, res) =>{
