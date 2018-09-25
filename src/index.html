@@ -25,6 +25,13 @@
     <i class="large material-icons">add</i>
   </a>
 </div>
+
+<ul class="collection">
+ <a href="#i" class="waves-effect collection-item" id="infoMenu"><li><i class="material-icons">info</i><h6>Información</h6></li></a>
+ <a href="#s" class="waves-effect collection-item" id="imgMenu"><li><i class="material-icons">image</i><h6>Abrir imagen</h6></li></a>
+ <a href="#e" class="waves-effect collection-item" id="removeMenu"><li><i class="material-icons">shopping_cart</i><h6>Retirar producto</h6></li></a>
+ <a href="#f" class="waves-effect collection-item" id="editMenu"><li><i class="material-icons">edit</i><h6>Editar</h6></li></a>
+</ul>
       
 <body>
         <div id="titleBar"></div>
@@ -34,7 +41,7 @@
             <ul class="right hide-on-med-and-down">
               <li><a href="#search" class="actSearch"><i class="material-icons">search</i></a></li>
               <li><a href="./insert.html"><i class="material-icons">attach_file</i></a></li>
-              <li><a href="#"><i class="material-icons">settings</i></a></li>
+              <li><a href="#" class="showVersion"><i class="material-icons">info_outline</i></a></li>
               <li><a href="#" class="remote"><i class="material-icons">wifi</i></a></li>
             </ul>
           </div>
@@ -53,7 +60,7 @@
             <li><a href="./insert.html" class="waves-effect"><i class="material-icons">attach_file</i>Ingresar producto</a></a></li>
             <li><div class="divider"></div></li>
             <li><a class="subheader">Aplicacion</a></li>
-            <li><a class="waves-effect" href="#!"><i class="material-icons">settings</i>Configuracion</a></li>
+            <li><a class="waves-effect showVersion" href="#!"><i class="material-icons">info_outline</i>Información</a></li>
             <li><a class="upBtn remote" href="#!"><i class="material-icons">wifi</i>Conexión Remota</a></li>
           </ul>
           <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">sort</i></a>
@@ -80,11 +87,62 @@
 
 </main>
 
+<!-- Edit Structure -->  
+<div class="userBox">
+      <form>
+          <div class="input-field">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="names" type="text">
+            <label for="names">Usuario</label>
+          </div>
+          <div class="input-field">
+            <i class="material-icons prefix">lock_outline</i>
+            <input id="password" type="password">
+            <label for="password">Contraseña</label>
+          </div>
+        <a href="#" class="btn blue" id="login">Entrar</a>
+      </form>    
+      <a href="#close" id="exitLogin"><i class="material-icons">close</i></a> 
+  </div>
+
+  
+<div id="editModel">
+    <a href="#close" id="exitEdit"><i class="material-icons">close</i></a> 
+  <!-- <h4 id="ttEdit">Editar Información</h4> -->
+  <div id="editContent">
+      <div class="sectInfo">
+        <h5>Modelo:</h5>
+        <input type="text" id="eModel">
+      </div> 
+      <div class="sectInfo">
+          <h5>No. Serial:</h5>
+          <input type="text" id="eSerial">
+      </div> 
+      <div class="sectInfo">
+          <h5>Tipo:</h5>
+          <input type="text" id="etipo">
+      </div>
+      <div class="sectInfo">
+          <h5>Marca:</h5>
+          <input type="text" id="eMarca">
+      </div> 
+      <div class="sectInfo">
+          <h5>Precio:</h5>
+          <input type="number" id="ePrice">
+      </div>
+      <div class="sectInfo">
+          <h5>Comentario:</h5>
+          <input type="text" value="No hay comentario" id="eComment">
+      </div> 
+  </div>
+  <a href="#" id="updateE" class="blue waves-effect"><i class="material-icons">save</i>Guardar cambios</a>
+</div>
+
   <!-- Modal Structure -->
   <div id="infoModel">
 <a href="#close" id="exitInfo"><i class="material-icons">close</i></a>
     <div id="infoContent">
-      <h4 id="ttInfo">Información</h4>
+      <h4 id="ttInfo">Información</h4><a href="#sell" id="editBtn" class="waves-effect"><i class="material-icons">edit</i></a>
       <div class="sectInfo">
         <h5>Modelo:</h5>
         <p id="modelo"></p>
@@ -116,7 +174,6 @@
       </div>
 
     </div>
-
     <div id="btns">
         <a href="#sell" id="retire" class="green waves-effect"><i class="material-icons">shopping_cart</i>Retirar Producto</a>
         <div id="pr" class="blue">

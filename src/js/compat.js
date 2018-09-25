@@ -67,7 +67,7 @@ searchBtn.addEventListener("click", () =>{
 var remote = document.querySelector(".remote");
 
 remote.addEventListener("click", () =>{
-    alert(`Bienvenido a EI Inventario si desea hacer una consulta remota Conectarse a http://${urlP}:8080/`);
+    alert(`Bienvenido a EI Inventario\nsi desea hacer una consulta remota\nConectarse a http://${urlP}:8080/`);
 })
 if(includesHeader){
 window.addEventListener("scroll", () =>{

@@ -17,6 +17,13 @@ $secondaryDark2:#455a64;
 body{
     background:rgba(0, 0, 0, 0.2);
 }
+body::-webkit-scrollbar{
+    display:none;
+    opacity: 0;
+    position: relative;
+    right:-100%;
+    margin-right:-100%;
+}
 
 //Title
 .insert{
@@ -102,8 +109,146 @@ main{
     border-radius:0 0 10px 10px
 }
  
+.userBox{
+    transition:all 0.15s ease;
+display:none;
+opacity:0;
+    position:fixed;
+    top:0;
+    width:100%;
+    height:100%;
+    left:0;
+    background:#000;
+    z-index: 100010;
+    #exitLogin{
+        position: absolute;
+        top:0;
+        right:0;
+        margin:20px;
+        color:#fff;
+        text-decoration:none;
+        z-index: 2;
+        i{
+            font-size:3em;
+        }
+    }
+    form{
+        position: absolute;
+        width:70%;
+        padding: 0;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+        .input-field input:focus + label {
+            color:$primary!important;
+          }
+          .input-field input:focus{
+            border-color:$primary!important;
+            box-shadow:none;     
+        }
+        div{
+            margin-bottom:70px;
+            transform:scale(1.2, 1.2);
+            i{
+                color:#fff!important;
+            }
+            input{
+                color:#fff!important;
+            }
+        }
+    }
+}
+#editModel{
+    display: none;
+    opacity: 0;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:rgba($color:#000, $alpha: 1);
+    z-index:10001;
+    transition:all 0.4s ease-in;
 
 
+    #updateE{
+        position: absolute;
+        bottom:0;
+        left:0;
+        width:100%;
+        color:#fff;
+        font-size:1.5em;
+        text-align:center;
+        padding:20px 0;
+        i{
+            position: relative;
+            top:5px;
+            font-size:1em;
+            margin-right:10px;
+        }
+    }
+    #exitEdit{
+        position: absolute;
+        top:0;
+        right:0;
+        margin:20px;
+        color:#fff;
+        text-decoration:none;
+        z-index: 2;
+        i{
+            font-size:3em;
+        }
+    }#ttEdit{
+        position: absolute;
+        top:0%;
+        left:0%;
+        color:#fff;
+        border-bottom:2px solid #fff;
+        font-size:3em;
+        padding-top:0;
+        margin-top:0;
+        margin:30px;
+    }
+    #editContent{
+        position: absolute;
+        left:50%;
+        top:45%;
+        transform:translate(-50%, -50%);
+        width:80%;
+        .sectInfo:nth-child(7){
+            margin-bottom:-8px;
+        }
+        .sectInfo{
+           
+            margin-bottom:20px;
+            h5{
+                width:100%;
+                margin:0;
+              //  font-size:3em;
+                font-size:1.2em;
+                font-family: "AvenirBold"!important;
+                color:#fff;
+            }
+            input{
+                margin:0;
+                width:100%;
+             //   background:$secondaryDark;
+                position: relative;
+                padding-left:1px;
+                color:rgba(255, 255, 255, 0.4);
+                font-size:1.2em;
+                transition:all 0.15s ease-in;
+                border-bottom:5px solid rgba(255, 255, 255, 0.2);
+            }
+            input:focus{
+               
+                border-color:transparent!important;
+                box-shadow:none;
+               
+            }
+        }
+    }
+}
 //INfo Model
 #infoModel{
    display: none;
@@ -116,7 +261,6 @@ main{
     background:rgba(0, 0, 0, 0.97);
     z-index:10000;
     transition:all 0.4s ease-in;
-
 
     #infoImg{
         position:absolute;
@@ -150,6 +294,7 @@ main{
         right:0;
         display:flex;
         justify-content:flex-end;
+        z-index: 3;
     #retire{
         color:#fff;
         font-size:1.5em;
@@ -181,9 +326,16 @@ main{
         width:50%;
         padding-right:40px;
         transform:translate(0%, -50%);
-        
+        #editBtn{
+            transition:all 0.15s ease-in;
+            margin-left:15px;
+            color:#fff;
+            i{
+                font-size:2em;
+            }
+            opacity:1;
+        }
         #ttInfo{
-            
             position: relative;
             left:0%;
             display: inline-block;
@@ -191,6 +343,7 @@ main{
             text-align:left;
             color:#fff;
         }
+
         .sectInfo{
             width:100%;
             *{
@@ -256,6 +409,27 @@ main{
 
 }
 
+.collection{
+    transition:all 0.3s ease-in;
+    display:none;
+    opacity: 0;
+    box-shadow:0 0 20px rgba(0, 0, 0, 0.6);
+    position: fixed;
+    z-index:10;
+    a li{
+        margin-right:5px;
+        color:$primary;
+        *{
+            display: inline-block;
+        }
+        i{
+            position: relative;
+            top:6px;
+            margin-right:5px;
+        }
+    }
+}
+
 @media screen and (max-width:700px){
     #infoContent{
        
@@ -293,7 +467,6 @@ main{
             
         }
     }
-
 }
 
 
@@ -338,6 +511,49 @@ main{
     .item {
         height:200px!important;
     }
+    #infoModel  #infoContent  #editBtn{
+        opacity:0;
+    }
+}
+
+
+@media screen and (min-width:700px){
+    .userBox form{
+        width:500px;
+    }
+    #updateE{
+        width:320px!important;
+       left:unset!important;
+       right:0!important;
+       font-size:1.5em!important;
+    }
+  #editContent{
+    top:50%!important;
+            .sectInfo{
+             
+                display:flex;
+                justify-content:space-between;
+                width:100%;
+                margin-bottom:40px!important;
+                h5{
+                    width:50%;
+                    font-size:2em!important;
+                }
+                input{
+                    text-align:right;
+                    top:-10px;
+                    width:50%;
+                    font-size:2em!important;
+                }
+             
+                input:focus{
+                    transform:scale(1.2, 1.2);
+                    top:-9px;
+                    color:#fff!important;
+                }
+            }
+    }
+    
 }
 
 
@@ -375,7 +591,11 @@ main{
 
 }
 
-
+@media screen and (min-width:1000px){
+    #updateE{
+        width:330px!important;
+    }
+}
 @media screen and (min-width:1024px){
     .container{
         position: relative;
@@ -388,6 +608,14 @@ main{
         position: relative;
         top:90px;
         padding-bottom:55px;
+    }
+    #editContent{
+        width:70%!important;
+    }
+}
+@media screen and (min-width:1200px){
+    .container{
+        max-width:1800px;
     }
 }
 

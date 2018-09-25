@@ -2,7 +2,6 @@
 
 
 var http = new XMLHttpRequest();
-
 var url;
 var loc = window.location.href;
 
@@ -114,13 +113,13 @@ var instances = M.Materialbox.init(elems, {
 
 
 //Events
-var remote = document.querySelector(".remote");
-
-remote.addEventListener("click", () =>{
-    alert(`Bienvenido a EI Inventario si desea hacer una consulta remota Conectarse a http://${urlP}:8080/`);
+var showVersion = document.querySelectorAll(".showVersion");
+showVersion[0].addEventListener("click", ()=>{
+    alert("Electrónica Internacional - Inventario\nEs un producto desarrollado por:\nAlexSantos© 2018 todos los derechos reservados.")
 })
-
-
+showVersion[1].addEventListener("click", ()=>{
+    alert("Electrónica Internacional - Inventario\nEs un producto desarrollado por:\nAlexSantos© 2018 todos los derechos reservados.")
+})
 
 document.querySelector(".save").addEventListener("click", () =>{
 c++;
